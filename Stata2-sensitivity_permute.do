@@ -55,7 +55,7 @@ foreach y in ptb vptb lbw vlbw  {
 	foreach x in n_five_c {
 foreach n of numlist 0 {
 
-permute 1.`x' _b[`x']. reps(99) cluster(county_fips): reghdfe `y' i.`x' i.($controls) c.maternal_age if t1_obsdays>=`n' , vce(cluster county_fips) absorb(county_fips#birth_year  birth_year#conception_quarter)
+permute 1.`x' _b[`x']. reps(9999) cluster(county_fips): reghdfe `y' i.`x' i.($controls) c.maternal_age if t1_obsdays>=`n' , vce(cluster county_fips) absorb(county_fips#birth_year  birth_year#conception_quarter)
 
 }
 
